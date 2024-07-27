@@ -1,0 +1,12 @@
+[package]
+name = "felys-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+felys = "0.1.1"
+clap = { version = "4.5.11", features = ["derive"] }
+
+[[bin]]
+name = "felys"
+path = "src/main.rs"
