@@ -1,4 +1,5 @@
 use std::path::PathBuf;
+
 use clap::Parser;
 use felys::Language;
 
@@ -29,5 +30,5 @@ pub struct Cli {
         help = "Choose the program language",
         default_value = "en"
     )]
-    pub lang: Language
+    pub lang: Language,
 }
