@@ -1,8 +1,23 @@
+use std::collections::HashMap;
 use std::io;
 
-use felys::{Context, Object, Output};
+use felys::{Context, Language, Object, Output};
 
-pub fn print(cx: &mut Context) -> Output {
+pub fn register(lang: &Language) -> HashMap<String, Object> {
+    match lang {
+        Language::ZH => HashMap::from([
+            ("打印".into(), Object::Rust(print)),
+            ("输入".into(), Object::Rust(input))
+        ]),
+        Language::EN => HashMap::from([
+            ("print".into(), Object::Rust(print)),
+            ("input".into(), Object::Rust(input)),
+        ])
+    }
+}
+
+
+fn print(cx: &mut Context) -> Output {
     let out = cx.args.iter()
         .map(|o| o.to_string())
         .collect::<Vec<String>>()
@@ -12,7 +27,7 @@ pub fn print(cx: &mut Context) -> Output {
 }
 
 
-pub fn input(cx: &mut Context) -> Output {
+fn input(cx: &mut Context) -> Output {
     if cx.args.len() > 1 {
         return Output::error("expect no more than one arg".into());
     }
@@ -23,6 +38,5 @@ pub fn input(cx: &mut Context) -> Output {
     if io::stdin().read_line(&mut buf).is_err() {
         return Output::error("failed to read input".into());
     };
-    buf.pop();
-    Object::String { value: buf }.into()
+    Object::String(buf.trim().into()).into()
 }

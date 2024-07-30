@@ -7,7 +7,6 @@ use felys::Language;
 #[command(name = "felys")]
 pub struct Cli {
     #[arg(
-        short, long,
         help = "Target file that you want to run"
     )]
     pub file: Option<PathBuf>,
