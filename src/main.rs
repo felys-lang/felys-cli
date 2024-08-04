@@ -47,7 +47,7 @@ impl Wrapper {
     }
 
     fn start_interactive_interpreter(&mut self) -> io::Result<()> {
-        println!("Felys {}", env!("CARGO_PKG_VERSION"));
+        println!("Felys-Cli 0.1.0");
 
         let mut history = Vec::new();
         let mut command = String::new();
