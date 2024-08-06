@@ -26,6 +26,13 @@ pub struct Cli {
 
     #[arg(
         short, long,
+        help = "Maximum function call",
+        default_value = "100"
+    )]
+    pub maxcall: usize,
+
+    #[arg(
+        short, long,
         help = "Choose the program language",
         default_value = "en"
     )]

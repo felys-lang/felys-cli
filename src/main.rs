@@ -23,7 +23,7 @@ struct Wrapper {
 fn main() {
     let cli = Cli::parse();
     let mixin = register(&cli.lang);
-    let worker = Worker::new(mixin, cli.timeout, cli.lang);
+    let worker = Worker::new(mixin, cli.timeout, cli.maxcall, cli.lang);
 
     let mut main = Wrapper { worker, v: cli.verbose };
     if let Some(file) = cli.file {

@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-felys = "0.1.6"
+felys = "0.1.7"
 clap = { version = "4.5.11", features = ["derive"] }
 crossterm = "0.28.1"
 
